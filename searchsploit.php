@@ -45,16 +45,27 @@ function software_update(){
 
 // some cleanings..
 
-system("wget https://github.com/offensive-security/exploit-database/archive/master.zip -O temp_offsec.zip");
-system("sudo unzip temp_offsec.zip");
-system("cd exploit-database-master/;cp -r * ..;");
-system("sudo rm -rf exploit-database-master/");
-system("sudo rm -rf db/");
-system("sudo mkdir db/; sudo chmod 777 db/");
-system("sudo mv files.csv db/");
-system("sudo rm -rf README.md");
-system("sudo rm -rf searchsploit");
-system("sudo rm -rf temp_offsec.zip");
+echo "Download the repos- Y/N- ";
+$hand = fopen("php://stdin", "r");
+$dw_repo = trim(fgets($hand));
+
+switch (strtolower($dw_repo)) {
+  case 'y':
+  system("wget https://github.com/offensive-security/exploit-database/archive/master.zip -O temp_offsec.zip");
+  system("sudo unzip temp_offsec.zip");
+  system("cd exploit-database-master/;cp -r * ..;");
+  system("sudo rm -rf exploit-database-master/");
+  system("sudo rm -rf db/");
+  system("sudo mkdir db/; sudo chmod 777 db/");
+  system("sudo mv files.csv db/");
+  system("sudo rm -rf README.md");
+  system("sudo rm -rf searchsploit");
+  system("sudo rm -rf temp_offsec.zip");
+    break;
+  case 'n':
+    continue;
+
+}
 
 
 // change this to your own database details as well as host.
