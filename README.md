@@ -12,3 +12,7 @@ curl-php5
 Usage:
 =======
 root@kali:~ php searchsploit.php
+<br>
+Once the import finishes, type the same command again.
+<br>
+root@kali:~ php searchsploit.php
