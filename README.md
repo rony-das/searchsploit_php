@@ -5,9 +5,9 @@ You can find the official one by Offensive Security at - https://github.com/offe
 
 Requirements:
 =============
-php-cli 
-mysql-server
-curl-php5
+php-cli <br>
+mysql-server <br>
+curl-php5 
 
 Usage:
 =======
