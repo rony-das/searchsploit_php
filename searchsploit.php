@@ -43,7 +43,19 @@ function software_update(){
 }
 
 
-// clean..
+// some cleanings..
+
+system("wget https://github.com/offensive-security/exploit-database/archive/master.zip -O temp_offsec.zip");
+system("sudo unzip temp_offsec.zip");
+system("cd exploit-database-master/;cp -r * ..;");
+system("sudo rm -rf exploit-database-master/");
+system("sudo mkdir db/; sudo chmod 777 db/");
+system("sudo mv files.csv db/");
+system("sudo rm -rf README.md");
+system("sudo rm -rf searchsploit");
+system("sudo rm -rf temp_offsec.zip");
+
+
 // change this to your own database details as well as host.
 check_database("root", "root", "localhost");
 
@@ -77,7 +89,7 @@ function check_database($username, $password, $hostname){
                             echo "[*] Database created successfully with the name 'myexploit'\n";
                             if ($connect->select_db("myexploit")){
 
-                                $create_table_query = "CREATE TABLE exploits(`id` 	INT NOT NULL, `file` VARCHAR(255) NOT NULL,`description` VARCHAR(255) NOT NULL, `date`  DATE NOT NULL,`author` VARCHAR(255) NOT NULL,`platform` VARCHAR(255) NOT NULL,`type` VARCHAR(255) NOT NULL,`port` INT NOT NULL, PRIMARY KEY(id));";
+                                $create_table_query = "CREATE TABLE exploits(`id`   INT NOT NULL, `file` VARCHAR(255) NOT NULL,`description` VARCHAR(255) NOT NULL, `date`  DATE NOT NULL,`author` VARCHAR(255) NOT NULL,`platform` VARCHAR(255) NOT NULL,`type` VARCHAR(255) NOT NULL,`port` INT NOT NULL, PRIMARY KEY(id));";
                                 if ($connect->query($create_table_query) == true){
                                     sleep(1);
                                     echo "[*] Tables inside the database placed successfully..\n";
