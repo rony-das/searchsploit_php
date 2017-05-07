@@ -49,6 +49,7 @@ system("wget https://github.com/offensive-security/exploit-database/archive/mast
 system("sudo unzip temp_offsec.zip");
 system("cd exploit-database-master/;cp -r * ..;");
 system("sudo rm -rf exploit-database-master/");
+system("sudo rm -rf db/");
 system("sudo mkdir db/; sudo chmod 777 db/");
 system("sudo mv files.csv db/");
 system("sudo rm -rf README.md");
